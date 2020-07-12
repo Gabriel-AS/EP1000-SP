@@ -46,12 +46,15 @@
         <p><kbd>
             Now comes the code. The code here is somewhat messy, but its arranged to make this slightly easier to modify<br>
             and pile on more stuff later on. On the left you will see all the initialisation, the ones Highlighted are<br>
-            all that matter for this stage. On the right you will see the structure for the cycling process: Set an Integer<br>
+            all that matter for this stage. On the right you will see the structure for the cycling process:<br>
+            </kbd></p>
+        <p><kbd>
+            Set an Integer<br>
             to be 0 to begin with, then everytime the button is pressed, the Input pin goes to High, Waits a few milliseconds<br>
-            to account for any oscillation, and then increases the Integer by 1. By locking it in a For loop, it makes the<br>
-            process run forever, and allows me to control exaclty how many possible states the Integer can have, When it<br>
-            gets increased by 1, and what Triggers it to increase by 1. Also because it allows me to overclock and test the<br>
-            loop by setting the Debounce delay to delay(1); <br>
+            to account for any debounce oscillation, and then increases the Integer by 1. And repeat forever.<br>
+            By locking it in a For loop, it makes the process run forever, and allows me to control exaclty how many possible<br>
+            states the Integer can have, When it gets increased by 1, and what Triggers it to increase by 1.<br>
+            Also because it allows me to overclock and test the loop by setting the Debounce delay to delay(1); <br>
             </kbd></p>
         <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
             <img alt="-Insert CODE start" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-05-15_16-25-25.jpg" height="400"/>
@@ -88,10 +91,31 @@
             </a></p>
         <p><kbd>
             I even managed to Overclock this, to have 8 (0 to 7) possible configurations, and two switches that could configure<br>
-            Each state in 1 of 4 ways, which would give a total of 28 possible states. But after this, it became clear that I had<br>
-            to get more breadboard space. <br>
+            Each state in 1 of 4 ways, which would give a total of 28 possible states.<br>
+            But after this, it became clear that I had to get more breadboard space.<br>
             </kbd></p>
-        
+        <h3>Stage 2: Analog Reading</h3>
+        <p><kbd>
+            The next stage would be to read Analog levels on the arduino using LDRs, to give an even wider range of possible states.<br>
+            I tend to think of this as more of Semi-Analog. It does input an analog value on the serial plotter, But it only gives<br>
+            a useful integer range of something like 130 to 720. The hope is to use this range and split this into 4 ranges,<br>
+            From 130 to 277, turn off all LEDs.<br>
+            From 277 to 424, turn on the Red LED<br>
+            From 424 to 571, turn on the Green LED<br>
+            From 571 to 720, turn on the Blue LED<br>
+            </kbd></p> 
+        <p><kbd>
+            I started this using a Variable Resistor, and I only just managed to capture a pulse on screen when it happened.<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Insert Bloop" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-05-15_16-25-25.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            Using this Circit<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Insert Circuit" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-05-15_16-25-25.jpg" height="400"/>
+            </a></p>
             
         <p><a href="https://gabriel-as.github.io/EP1000-SP/main.html">Homepage</a><br><p>
         <p><a href="https://gabriel-as.github.io/EP1000-SP/part1.html">Fablab: Tools and safety</a><br><p>
