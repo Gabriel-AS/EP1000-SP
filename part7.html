@@ -16,14 +16,61 @@
     </head>
     <body>
         
-        <h1>This looks like something from 2004</h1>
+        <h1>EP1000</h1>
         <h2>Embedded Programming</h2>
         
-        <h4><kbd>Hello there,</kbd></h4>
         <p><kbd>
-            My name is Gabriel, I am a student at Singapore Polytechnic, Aerospace Electronics in DASE/FT/2A/03. 
-        </kbd></p>
-        
+            This section will cover the various design attempts on an Arduino Nano. I would have used a simulation<br>
+            software called TinkerCad, but it lags far too much on my laptop to be all that useful. Instead I have<br>
+            built the circuits up in stages in real life. I will be recycling an older project that used a Nano as<br>
+            I find it easier to breadboard small scale circuits with a Nano, plus the recycled project already has<br>
+            two homemade RGB LEDs fixed in.<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Insert off Nano-" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-05-15_16-25-25.jpg" height="400"/>
+            </a></p>
+        <h3>Stage 1: Cycling between Multiple LEDs</h3>
+        <p><kbd>
+            The first part of this is to set up a Button circuit: a button between logic High and the Input pin<br>
+            and a large resistor between the Input pin and Ground, so as to return the Input to Low when the button<br>
+            is open, without shorting 5V to ground and setting your microcontroller on fire. Its a questionable but<br>
+            good habit to occasionally touch the main IC (or the Regulator unit on larger boards) every now and then,<br>
+            just to tell if you have accidentally shorted the entire microcontroller. From past experience this has<br>
+            saved quite a number of Microcontrollers from my carelessly improvised wiring.<br>
+            </kbd></p>
+        <p><kbd>
+            Next, set up some LEDs and a few limiting resistors, on the Nano I'm using this comes in the form of a<br>
+            sawn off 10K Variable resistor and all the LEDs being Active-Low. The LED bank is tied to a shared 5V pin<br>
+            which was also used to power a small OLED screen, which has been removed to show the absolute mess of wires.<br>
+            </kbd></p>
+        <p><kbd>
+            Now comes the code. The code here is somewhat messy, but its arranged to make this slightly easier to modify<br>
+            and pile on more stuff later on. On the left you will see all the initialisation, the ones Highlighted are<br>
+            all that matter for this stage. On the right you will see the structure for the cycling process: Set an Integer<br>
+            to be 0 to begin with, then everytime the button is pressed, the Input pin goes to High, Waits a few milliseconds<br>
+            to account for any oscillation, and then increases the Integer by 1. By locking it in a For loop, it makes the<br>
+            process run forever, and allows me to control exaclty how many possible states the Integer can have, When it<br>
+            gets increased by 1, and what Triggers it to increase by 1. Also because it allows me to overclock and test the<br>
+            loop by setting the Debounce delay to delay(1); <br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Insert CODE start" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-05-15_16-25-25.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            Originally, I just had 3 possible states, 4 if you count the OFF state, Int 0 meant all LEDs were off, Int 1<br>
+            meant the Reds were on, Int 2 meant the Greens were on, and int 3 meant the Blues were on. Which was simple<br>
+            enough, and even easier to add more stages if needed with the magical Ctrl C and Ctrl V.<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Insert RED nano" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-05-15_16-25-25.jpg" height="400"/>
+            </a></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Insert GREEN nano" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-05-15_16-25-25.jpg" height="400"/>
+            </a></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Insert BLUE nano" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-05-15_16-25-25.jpg" height="400"/>
+            </a></p>
+            
         <p><a href="https://gabriel-as.github.io/EP1000-SP/main.html">Homepage</a><br><p>
         <p><a href="https://gabriel-as.github.io/EP1000-SP/part1.html">Fablab: Tools and safety</a><br><p>
         <p><a href="https://gabriel-as.github.io/EP1000-SP/part2.html">Operating the Machines</a><br><p>
