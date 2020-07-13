@@ -29,7 +29,7 @@
         <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
             <img alt="-Insert off Nano-" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-12_12-05-01.jpg" height="400"/>
             </a></p>
-        <h3>Stage 1: Cycling between Multiple LEDs</h3>
+        <h3><kbd>Stage 1: Cycling between Multiple LEDs</kbd></h3>
         <p><kbd>
             The first part of this is to set up a Button circuit: a button between logic High and the Input pin<br>
             and a large resistor between the Input pin and Ground, so as to return the Input to Low when the button<br>
@@ -94,7 +94,7 @@
             Each state in 1 of 4 ways, which would give a total of 28 possible states.<br>
             But after this, it became clear that I had to get more breadboard space.<br>
             </kbd></p>
-        <h3>Stage 2: Analog Reading</h3>
+        <h3><kbd>Stage 2: Analog Read LDR</kbd></h3>
         <p><kbd>
             The next stage would be to read Analog levels on the arduino using LDRs, to give an even wider range of possible states.<br>
             I tend to think of this as more of Semi-Analog. It does input an analog value on the serial plotter, But it only gives<br>
@@ -116,7 +116,99 @@
         <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
             <img alt="-Insert Circuit" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-12_12-04-47.jpg" height="400"/>
             </a></p>
-            
+        <p><kbd>
+            Now a slight problem, I might have broken the LDR somehow. I tried fixing it properly onto the UNO instead<br>
+            but even then I could not get it to give a large enough range of values. Here is the updated circuit layout:<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Insert LDR Circuit" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-12_12-04-47.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            Here is me shining a really powerful torchlight onto it<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Insert LDR Circuit liit" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-12_12-04-47.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            And here is the slightly unsatisfying result<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Insert LDR Output" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-12_12-04-47.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            Its definitely not an issue with the Arduino or the analog pin as I tried this again using a different pin<br>
+            and tried to use a Variable Resistor instead. Even then, its just the LDR that has an issue.<br>
+            </kbd></p>
+        <h3><kbd>Stage 3: Humidity Sensors</kbd></h3>
+        <p><kbd>
+            For this segment, we will be using a DHT11 which apparently does not have a standard library Included in Arduino IDE<br>
+            so we will first have to google for one. Once you find one, let your antivirus tell you its okay, and then copy it into<br>
+            your Library directory. It might be under Documents/Arduino/Libraries. Take note of the file directory shown below.<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Insert file directory" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-12_12-04-47.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            Set up the circuit as seen here<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Insert Humidity circuit" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-12_12-04-47.jpg" height="400"/>
+            </a></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Insert Humidity circuit back" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-12_12-04-47.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            Once that is done, go get the sample code and use it here.<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Insert Humidity code" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-12_12-04-47.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            Great way to test if it works, hold up the board and exhale on the sensor, especially if you're in an<br>
+            air conditioned room. You can see the jump in humidity between the second and third entries on the monitor.<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Insert Humidity output" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-12_12-04-47.jpg" height="400"/>
+            </a></p>
+        <h3><kbd>Stage 4: Ultrasonic sensors Sensors</kbd></h3>
+        <p><kbd>
+            For this part, Plug in your ultrasonic sensor as shown here, take note of the trigger and echo pins.<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Insert Ultrasound circuit" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-12_12-04-47.jpg" height="400"/>
+            </a></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Insert Ultrasound circuit back" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-12_12-04-47.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            Now put some random object up some distance from the sensor, such as this measuring tape roughly 11-12 cm away.<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Insert Ultrasound circuit range" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-12_12-04-47.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            Now use this bit of code which determines the range of the object, based on the time taken to pulse and return the signal<br>
+            and the speed of sound in air which is somehwere around 300m/s.<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Insert Ultrasound circuit code" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-12_12-04-47.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            Works fairly well on the monitor, Its okay that it hesitates between 11 and 12 because the measuring tape was around 11.4cm away<br> 
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Insert Ultrasound circuit monitor" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-12_12-04-47.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            Looks even better on the serial plotter. If you look closely you can see the exact point I dropped the measuring tape on my foor<br>
+            and started slamming on the desk.<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Insert Ultrasound circuit plotter" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-12_12-04-47.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            And that's all for messing around with the sensors, now for the final project.<br>
+            </kbd></p>
         <p><a href="https://gabriel-as.github.io/EP1000-SP/main.html">Homepage</a><br><p>
         <p><a href="https://gabriel-as.github.io/EP1000-SP/part1.html">Fablab: Tools and safety</a><br><p>
         <p><a href="https://gabriel-as.github.io/EP1000-SP/part2.html">Operating the Machines</a><br><p>
