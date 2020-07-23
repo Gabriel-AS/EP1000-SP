@@ -64,6 +64,143 @@
             this project should be simple enough that its possible to build,<br>
             yet interesting enough that it works great when its finished.<br>
             </kbd></p>
+        <p><kbd>
+            So its been a few days, I have managed to find the 3x3 LED boards from Sim Lim. Every piece of documentation<br>
+            I read about this warn that this module has the tendancy to draw a surprisingly high current, especially when<br>
+            there are more than 10 LEDs connected. Since I will be running at least 30 of them, I need to rig a dedicated<br>
+            power supply and a very big cut-off in the event I see smoke. I've bought 4 in case I accidentally burn one.<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Insert Packet" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-14_14-10-57.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            I will run the LED bank off a DC power supply, because I am not risking that much current through the Arduino.<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Insert DC pot" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-14_14-10-57.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            First test: looking pretty good. I'll tidy up the code later. The LEDs are still addressed like a strip, with 0<br>
+            starting from the bottom left corner, counting up to 2 on the top left corner, 3 in the bottom middle, and so on.<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Insert Circuit" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-14_14-10-57.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            It looks so much better in Low light, I love the fact that the code for this is just "led[number?] = CRGB:: colour?;"<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Insert Liiit" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-14_14-10-57.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            For the code, I'm using the FastLED library, link below, along with a Github repo with some very well written<br>
+            troubleshooting stuff. Do take some time to sit down for a while to read it, I've had to restart twice, and this helps.<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-FastLED" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-14_14-10-57.jpg" height="400"/>
+            </a></p>
+        <p><a href="https://http://fastled.io">FastLED library</a><br><p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-FastLED Credits" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-14_14-10-57.jpg" height="400"/>
+            </a></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-FastLED github" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-14_14-10-57.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            On the left half, at the top you can see the initialization code, I kid you not it is just 4 things,<br>
+            Include the library, Declare the number of LEDs (count from 1 not 0, made that mistake), Declare the<br>
+            data pin, that one CRGB thing, and the setup structure. Below that, I use a slightly inefficient loop<br>
+            It just sets 3 leds to switch on and off together, then move up to the next row of 3, and repeats for<br>
+            3 rows, as its a 3x3
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-code 1" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-14_14-10-57.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            On the right, is the lower half, the same loop. I tried that so I can just copy and paste it over and<br>
+            over again, just changing the starting LEDs for each module because it starts countng from the bottom.<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-code 2" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-14_14-10-57.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            On both sides, same code, just counts Backwards and moves back down the rows. I want it to cycle forward<br>
+            and then cycle back quickly. Same code, just subtracting the values instead of increasing them by 1.<br>
+            </kbd></p>
+        <p><kbd>
+            Now it needs a housing. I'm thinking of a 3d printed Light-blocker, to make sure that the light from one<br>
+            LED does not bleed over into the next row, so maybe a grid, printed in black, and 100% infill. Attempt 1:<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Grid 1" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-14_14-10-57.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            I measured it to fit the LEDs' positions, and the little SMD capacitors on the board. Now, Copy and Paste<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Grid 2" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-14_14-10-57.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            And here's the underside, fitted to 3mm slots I will cut for each number plate.<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Grid 2 underside" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-14_14-10-57.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            I think this will be the only 3d printed piece in the housing, the locking bar is going to be laser cut on acryllic.<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Grid plus lock" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-14_14-10-57.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            The 3d printed plate has a lug that will lock into a matching hole in the laser cut pieces. This highlight shows<br>
+            the 3d printed part,<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-Grid highlight" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-14_14-10-57.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            This highlight shows the laser cut pieces.<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-lock highlight" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-14_14-10-57.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            The only issue being the 3d printed plate will take hours to print.<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-3d print" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-14_14-10-57.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            Here is the basic box design, big enough to fit a slab of breadboard in, plus enough space for future modifications.<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-3d box" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-14_14-10-57.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            Here is the flatpack view of all the parts of the Box housing.<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-3d box flatpack" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-14_14-10-57.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            And here is a flatpack view of all the laser cut parts plus the 3d printed plate. Plus 12 number plates.<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-3d set flatpack" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-14_14-10-57.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            And here is a 2d view of all the laser cut parts plus the laser engraving, Fits happily within an A3 sheet.<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-3d set autocad" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-14_14-10-57.jpg" height="400"/>
+            </a></p>
+        <p><kbd>
+            Just as a little souvenir<br>
+            </kbd></p>
+        <p><a href= "/Users/STARGAZER/Desktop/DFAB/photo_2020-04-27_07-54-03.jpg">
+            <img alt="-signature" src= "https://gabriel-as.github.io/EP1000-SP/photo_2020-07-14_14-10-57.jpg" height="400"/>
+            </a></p>
         
         <p><a href="https://gabriel-as.github.io/EP1000-SP/main.html">Homepage</a><br><p>
         <p><a href="https://gabriel-as.github.io/EP1000-SP/part1.html">Fablab: Tools and safety</a><br><p>
